@@ -26,7 +26,6 @@ namespace HttpSignature.Client.Tests
             };
 
             var content = new FormUrlEncodedContent(data);
-
             DigestGenerator generator = new DigestGenerator("SHA256");
 
             // Act
@@ -56,7 +55,7 @@ namespace HttpSignature.Client.Tests
         }
 
         [Fact]
-        public async Task GivenInvalidHashingAlgorithmThrowsException()
+        public void GivenInvalidHashingAlgorithmThrowsException()
         {
             // Act
             Assert.Throws<ArgumentException>(() => new DigestGenerator("INVALID"));

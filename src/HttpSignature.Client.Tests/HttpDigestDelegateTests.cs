@@ -33,7 +33,7 @@ namespace HttpSignature.Client.Tests
             var invoker = new HttpMessageInvoker(_httpDigestDelegate);
 
             HttpRequestMessage requestMessage = new HttpRequestMessage();
-            requestMessage.Content = new StringContent("");
+            requestMessage.Content = new StringContent("");            
             // Act
             var result = await invoker.SendAsync(requestMessage, CancellationToken.None);
 
