@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using HttpSignatures.Client.Entities;
 
 namespace HttpSignatures.Client.Services
 {
@@ -22,6 +23,11 @@ namespace HttpSignatures.Client.Services
                 throw new ArgumentException($"The passed in hashing algorithm ({hashingAlgorithmName}) was not valid.");
             }
             _hashingAlgorithmName = hashingAlgorithmName.ToUpper();
+        }
+
+        public DigestGenerator(ISignatureSpecification signatureSpecification) : this(signatureSpecification.HashAlgorithm)
+        {
+            
         }
 
 

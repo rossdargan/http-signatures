@@ -11,5 +11,7 @@ namespace HttpSignatures.Client.Entities
         string Algorithm { get; }
         string HashAlgorithm { get; }
         string Realm { get; }
+
+        string SignatureHeaderName { get; }
     }
 }

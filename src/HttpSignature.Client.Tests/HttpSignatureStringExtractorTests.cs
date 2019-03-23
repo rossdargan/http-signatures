@@ -72,5 +72,7 @@ namespace HttpSignature.Client.Tests
             // Assert
             Assert.Equal("(request-target): get /test", result);
         }
+
+
     }
 }
