@@ -35,5 +35,7 @@ namespace HttpSignatures.Client.Entities
                 return Algorithm.Split('-')[1];
             }
         }
+
+        public string SignatureHeaderName { get; set; }
     }
 }

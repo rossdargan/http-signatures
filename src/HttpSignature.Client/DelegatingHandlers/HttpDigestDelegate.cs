@@ -16,7 +16,7 @@ namespace HttpSignatures.Client.DelegatingHandlers
         }
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            string digest = await _digestGenerator.CalculateDigest(await request.Content.ReadAsStreamAsync());
+            string digest = _digestGenerator.CalculateDigest(await request.Content.ReadAsStreamAsync());
             request.Headers.Add(DigestHeaderKey, digest);
             return await base.SendAsync(request, cancellationToken);
         }

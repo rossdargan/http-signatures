@@ -20,7 +20,7 @@ namespace HttpSignatures.Client.Services
         /// <returns></returns>
         public string ExtractSignatureString(IRequest request, ISignatureSpecification signatureAuth)
         {
-            var headerStrings = signatureAuth.Headers.Select(header=> string.Join(", ", GetHeaderValue(header, request)));            
+            var headerStrings = signatureAuth.Headers.Select(header=> $"{CleanHeaderName(header)}: {string.Join(", ", GetHeaderValue(header, request))}");            
             return string.Join("\n", headerStrings);
         }
         private object CleanHeaderName(string header)

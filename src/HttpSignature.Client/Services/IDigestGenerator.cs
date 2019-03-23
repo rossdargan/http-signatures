@@ -14,6 +14,6 @@ namespace HttpSignatures.Client.Services
         /// </summary>
         /// <param name="request">The data we will calculate the digest from</param>
         /// <returns>A string with the hashing algorithim prefixed at the start. E.g. "SHA256=xxxxxxxx"</returns>
-        Task<string> CalculateDigest(Stream request);
+        string CalculateDigest(Stream request);
     }
 }

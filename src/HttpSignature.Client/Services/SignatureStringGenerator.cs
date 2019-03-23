@@ -43,8 +43,8 @@ namespace HttpSignatures.Client.Services
             var algorithm = spec.Algorithm;
             var signatureString = _httpSignatureStringExtractor.ExtractSignatureString(r, spec);
             // TODO: Need to implement a ec/RSA generator https://tools.ietf.org/id/draft-cavage-http-signatures-01.html#rsa-example
-           var alg= AsymmetricAlgorithm.Create("");
-            RSA.Create("").
+         //  var alg= AsymmetricAlgorithm.Create("");
+          //  RSA.Create("").
             var hmac = KeyedHashAlgorithm.Create(algorithm.Replace("-", "").ToUpper());
             hmac.Initialize();
             hmac.Key = Convert.FromBase64String(key);

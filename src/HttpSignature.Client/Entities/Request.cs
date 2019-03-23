@@ -8,7 +8,7 @@ namespace HttpSignatures.Client.Entities
     public class Request : IRequest
     {
         public string Method { get; set; }
-        public Dictionary<string, IEnumerable<string>> Headers { get; private set; } = new Dictionary<string, IEnumerable<string>>();
+        public Dictionary<string, IEnumerable<string>> Headers { get; } = new Dictionary<string, IEnumerable<string>>(StringComparer.CurrentCultureIgnoreCase);
         public string Body { get; set; }
         public IEnumerable<string> GetHeader(string header)
         {

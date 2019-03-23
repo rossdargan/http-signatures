@@ -29,7 +29,7 @@ namespace HttpSignature.Client.Tests
             DigestGenerator generator = new DigestGenerator("SHA256");
 
             // Act
-            var result = await generator.CalculateDigest(await content.ReadAsStreamAsync());
+            var result = generator.CalculateDigest(await content.ReadAsStreamAsync());
 
             // Assert
             Assert.Equal("SHA256=dX9LYG6i/d+TuzG0QMckFzqOZ6Wll/TlGGjUtqGyMhQ=", result);
@@ -48,7 +48,7 @@ namespace HttpSignature.Client.Tests
             DigestGenerator generator = new DigestGenerator("SHA-256");
 
             // Act
-            var result = await generator.CalculateDigest(await content.ReadAsStreamAsync());
+            var result = generator.CalculateDigest(await content.ReadAsStreamAsync());
 
             // Assert
             Assert.Equal("SHA-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=", result);

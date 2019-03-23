@@ -29,7 +29,7 @@ namespace HttpSignature.Client.Tests
         {
             // Arrange
             string digest = "TEST";
-            _digestGeneratorMock.Setup(p => p.CalculateDigest(It.IsAny<Stream>())).ReturnsAsync(digest);
+            _digestGeneratorMock.Setup(p => p.CalculateDigest(It.IsAny<Stream>())).Returns(digest);
             var invoker = new HttpMessageInvoker(_httpDigestDelegate);
 
             HttpRequestMessage requestMessage = new HttpRequestMessage();

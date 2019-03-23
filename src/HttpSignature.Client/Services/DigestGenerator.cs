@@ -30,8 +30,7 @@ namespace HttpSignatures.Client.Services
             
         }
 
-
-        public async Task<string> CalculateDigest(Stream data)
+        public string CalculateDigest(Stream data)
         {
             byte[] hash = _hashingAlgorithm.ComputeHash(data);
             string digest = System.Convert.ToBase64String(hash);
