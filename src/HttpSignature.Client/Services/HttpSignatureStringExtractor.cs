@@ -1,8 +1,6 @@
 ﻿using HttpSignatures.Client.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HttpSignatures.Client.Services
 {
@@ -18,7 +16,7 @@ namespace HttpSignatures.Client.Services
         {
             if (header == "(request-target)")
             {
-                return new List<string>() { request.Method.ToString().ToLower() + " " + request.Path };
+                return new List<string>() { request.Method.ToLower() + " " + request.Path };
             }
             else
             {
