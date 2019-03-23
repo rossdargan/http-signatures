@@ -1,4 +1,5 @@
-﻿using HttpSignatures.Client.Services;
+﻿using HttpSignatures.Client.Entities;
+using HttpSignatures.Client.Services;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -59,7 +60,25 @@ namespace HttpSignature.Client.Tests
         {
             // Act
             Assert.Throws<ArgumentException>(() => new DigestGenerator("INVALID"));
+        }
 
+        [Fact]
+        public async Task UseTheSpecificationToGetTheHashAlgorithm()
+        {
+            // Arrange
+            var content = new StringContent("{\"hello\": \"world\"}");
+            ISignatureSpecification signatureSpecification = new SignatureSpecification()
+            {
+                HashAlgorithm = "SHA-256"
+            };
+
+            DigestGenerator generator = new DigestGenerator(signatureSpecification);
+
+            // Act
+            var result = generator.CalculateDigest(await content.ReadAsStreamAsync());
+
+            // Assert
+            Assert.Equal("SHA-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=", result);
         }
     }
 }

@@ -41,5 +41,6 @@ namespace HttpSignature.Client.Tests
             Assert.Contains(requestMessage.Headers, p=>p.Value.Any(q=> q ==digest));
 
         }
+
     }
 }

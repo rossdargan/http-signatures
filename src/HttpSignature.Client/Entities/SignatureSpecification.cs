@@ -6,11 +6,6 @@ namespace HttpSignatures.Client.Entities
 {
     public class SignatureSpecification : ISignatureSpecification
     {
-        public SignatureSpecification()
-        {
-            Realm = "default";
-        }
-
         public string KeyId
         {
             get;
@@ -23,18 +18,9 @@ namespace HttpSignatures.Client.Entities
             set;
         }
 
+        public string Algorithm { get; set; }        
 
-        public string Algorithm { get; set; }
-        public string Realm { get; set; }
-
-
-        public string HashAlgorithm
-        {
-            get
-            {
-                return Algorithm.Split('-')[1];
-            }
-        }
+        public string HashAlgorithm { get; set; }
 
         public string SignatureHeaderName { get; set; }
     }

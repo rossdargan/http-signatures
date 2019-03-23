@@ -10,8 +10,6 @@ namespace HttpSignatures.Client.Entities
         IEnumerable<string> Headers { get; }
         string Algorithm { get; }
         string HashAlgorithm { get; }
-        string Realm { get; }
-
         string SignatureHeaderName { get; }
     }
 }
