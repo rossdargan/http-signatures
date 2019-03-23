@@ -25,13 +25,13 @@ namespace HttpSignatures.Client.Services
             {
                 throw new ArgumentNullException(nameof(request));
             }
-
-            StringBuilder signatureString = new StringBuilder();
-            signatureString.AppendLine($"{PseudoHeader}: {httpMethod.ToLower()} {path}");
-            foreach (var header in signatureSpecification.Headers)
-            {
-                signatureString.AppendLine($"{}")
-            }
+            return "TODO";
+            //StringBuilder signatureString = new StringBuilder();
+            //signatureString.AppendLine($"{PseudoHeader}: {httpMethod.ToLower()} {path}");
+            //foreach (var header in signatureSpecification.Headers)
+            //{
+            //    signatureString.AppendLine($"{}")
+            //}
         }
     }
 }
