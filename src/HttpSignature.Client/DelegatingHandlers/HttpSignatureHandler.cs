@@ -6,12 +6,15 @@ using HttpSignatures.Client.Services;
 
 namespace HttpSignatures.Client.DelegatingHandlers
 {
-    public class HttpSignatureHandler : DelegatingHandler
+    /// <summary>
+    /// Generates a signature for the request and adds it to the request
+    /// </summary>
+    public class SignatureDelegatingHandler : DelegatingHandler
     {
         private readonly ISignatureGenerator _signatureGenerator;
         private readonly ISignatureSpecification _signatureSpecification;
 
-        public HttpSignatureHandler(ISignatureGenerator signatureGenerator, ISignatureSpecification signatureSpecification)
+        public SignatureDelegatingHandler(ISignatureGenerator signatureGenerator, ISignatureSpecification signatureSpecification)
         {
             _signatureGenerator = signatureGenerator;
             _signatureSpecification = signatureSpecification;

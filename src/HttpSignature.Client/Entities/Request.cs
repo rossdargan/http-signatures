@@ -9,7 +9,6 @@ namespace HttpSignatures.Client.Entities
     {
         public string Method { get; set; }
         public Dictionary<string, IEnumerable<string>> Headers { get; } = new Dictionary<string, IEnumerable<string>>(StringComparer.CurrentCultureIgnoreCase);
-        public string Body { get; set; }
         public IEnumerable<string> GetHeader(string header)
         {
             return Headers[header];

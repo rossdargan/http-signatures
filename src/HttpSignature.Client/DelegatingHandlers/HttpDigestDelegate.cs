@@ -5,12 +5,17 @@ using System.Threading.Tasks;
 
 namespace HttpSignatures.Client.DelegatingHandlers
 {
-    public class HttpDigestDelegate : DelegatingHandler
+    /// <summary>
+    /// The http delegate is used to add a digest header to the request. 
+    /// It will apply the requested hasing algorithm to the body of the request to be made and 
+    /// add it as a header to the request pipeline.
+    /// </summary>
+    public class DigestDelegatingHandler : DelegatingHandler
     {
         private const string DigestHeaderKey = "digest";
         private readonly IDigestGenerator _digestGenerator;
 
-        public HttpDigestDelegate(IDigestGenerator digestGenerator)
+        public DigestDelegatingHandler(IDigestGenerator digestGenerator)
         {
             _digestGenerator = digestGenerator;
         }

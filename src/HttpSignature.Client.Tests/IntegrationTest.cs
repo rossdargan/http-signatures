@@ -47,10 +47,14 @@ namespace HttpSignature.Client.Tests
             };
 
             IStringSigner stringSigner = new RSAStringSigner(signatureSpecification, Fixture.PrivateKey);
-            ISignatureGenerator signatureGenerator = new SignatureGenerator(stringSigner, new HttpSignatureStringExtractor(), signatureSpecification.KeyId);
+            HttpSignatureStringExtractor httpSignatureExtractor = new HttpSignatureStringExtractor()
+            {
+                HeaderSeperationString = " "
+            };
+            ISignatureGenerator signatureGenerator = new SignatureGenerator(stringSigner, httpSignatureExtractor, signatureSpecification.KeyId);
 
-            var httpSignatureHandler = new HttpSignatureHandler(signatureGenerator, signatureSpecification);
-            var httpDigestDelegate = new HttpDigestDelegate(new DigestGenerator(signatureSpecification));
+            var httpSignatureHandler = new SignatureDelegatingHandler(signatureGenerator, signatureSpecification);
+            var httpDigestDelegate = new DigestDelegatingHandler(new DigestGenerator(signatureSpecification));
             httpDigestDelegate.InnerHandler = httpSignatureHandler;
             httpSignatureHandler.InnerHandler = new Mocks.DelegatingHandlerMock();
             var invoker = new HttpMessageInvoker(httpDigestDelegate);

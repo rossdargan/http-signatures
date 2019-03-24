@@ -25,16 +25,6 @@ namespace HttpSignatures.Client.Services
 
         public string GenerateSignature(IRequest request, ISignatureSpecification signatureSpecification)
         {
-            if (signatureSpecification == null)
-            {
-                throw new ArgumentNullException(nameof(signatureSpecification));
-            }
-
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
-
             var signatureString = _httpSignatureStringExtractor.ExtractSignatureString(request, signatureSpecification);
             var signedString = _stringSigner.Sign(signatureString);
 

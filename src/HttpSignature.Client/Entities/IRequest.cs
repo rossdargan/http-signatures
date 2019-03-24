@@ -8,7 +8,6 @@ namespace HttpSignatures.Client.Entities
         /// The method of the request (GET/PUT/POST etc)
         /// </summary>
         string Method { get; }
-        string Body { get; }
         /// <summary>
         /// Returns the header values from the string. Note it should do this in a case insensitive way.
         /// </summary>

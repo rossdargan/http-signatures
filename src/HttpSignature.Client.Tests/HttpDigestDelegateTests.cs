@@ -17,11 +17,11 @@ namespace HttpSignature.Client.Tests
     public class HttpDigestDelegateTests
     {
         Moq.Mock<IDigestGenerator> _digestGeneratorMock;
-        HttpDigestDelegate _httpDigestDelegate;
+        DigestDelegatingHandler _httpDigestDelegate;
         public HttpDigestDelegateTests()
         {
             _digestGeneratorMock = new Moq.Mock<IDigestGenerator>();
-            _httpDigestDelegate = new HttpDigestDelegate(_digestGeneratorMock.Object);
+            _httpDigestDelegate = new DigestDelegatingHandler(_digestGeneratorMock.Object);
             _httpDigestDelegate.InnerHandler = new DelegatingHandlerMock();
         }
         [Fact]

@@ -8,6 +8,10 @@ namespace HttpSignatures.Client.Services
     {
 
         /// <summary>
+        /// Multiple headers will be joined together using this seperation string. 
+        /// </summary>
+        public string HeaderSeperationString { get; set; } = ", ";
+        /// <summary>
         /// Create the header field string by concatenating the **lowercased** header field name 
         /// followed with an ASCII colon `:`, an ASCII space ` `, and the header field value. 
         /// Leading and trailing optional whitespace (OWS) in the header field value MUST be omitted 
@@ -20,7 +24,7 @@ namespace HttpSignatures.Client.Services
         /// <returns></returns>
         public string ExtractSignatureString(IRequest request, ISignatureSpecification signatureAuth)
         {
-            var headerStrings = signatureAuth.Headers.Select(header=> $"{CleanHeaderName(header)}: {string.Join(" ", GetHeaderValue(header, request))}");            
+            var headerStrings = signatureAuth.Headers.Select(header=> $"{CleanHeaderName(header)}: {string.Join(HeaderSeperationString, GetHeaderValue(header, request))}");            
             return string.Join("\n", headerStrings);
         }
         private object CleanHeaderName(string header)

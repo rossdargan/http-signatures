@@ -36,8 +36,8 @@ namespace HttpSignature.Client.Tests
             IHttpSignatureStringExtractor signatureStringExtractor = new HttpSignatureStringExtractor();
             Request request = new Request();
 
-            request.SetHeader("test", new[] { "value1", "value2" });
-            request.SetHeader("ignoredheader", new[] { "value1", "value2" });
+            request.SetHeader("test", new[] { "value1"});
+            request.SetHeader("ignoredheader", new[] { "value1" });
 
             ISignatureSpecification specification = new SignatureSpecification()
             {
@@ -47,7 +47,7 @@ namespace HttpSignature.Client.Tests
             string result = signatureStringExtractor.ExtractSignatureString(request, specification);
 
             // Assert
-            Assert.Equal("test: value1, value2", result);
+            Assert.Equal("test: value1", result);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace HttpSignature.Client.Tests
             IHttpSignatureStringExtractor signatureStringExtractor = new HttpSignatureStringExtractor();
             Request request = new Request();
 
-            request.SetHeader("Test", new[] { "value1", "value2" });
+            request.SetHeader("Test", new[] { "value1"});
 
             ISignatureSpecification specification = new SignatureSpecification()
             {
@@ -96,7 +96,7 @@ namespace HttpSignature.Client.Tests
             string result = signatureStringExtractor.ExtractSignatureString(request, specification);
 
             // Assert
-            Assert.Equal("test: value1, value2", result);
+            Assert.Equal("test: value1", result);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace HttpSignature.Client.Tests
             IHttpSignatureStringExtractor signatureStringExtractor = new HttpSignatureStringExtractor();
             Request request = new Request();
 
-            request.SetHeader("Test", new[] { "value1", "value2" });
+            request.SetHeader("Test", new[] { "value1" });
 
             ISignatureSpecification specification = new SignatureSpecification()
             {
@@ -119,7 +119,7 @@ namespace HttpSignature.Client.Tests
             string result = signatureStringExtractor.ExtractSignatureString(request, specification);
 
             // Assert
-            Assert.Equal("test: value1, value2", result);
+            Assert.Equal("test: value1", result);
         }
     }
 }
