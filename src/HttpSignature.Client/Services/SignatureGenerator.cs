@@ -34,8 +34,14 @@ namespace HttpSignatures.Client.Services
 
         private string FormatAuthorization(ISignatureSpecification spec, string signature)
         {
+            string listOfHeaders = string.Join(" ", spec.Headers);
+            if (!spec.IncludePseduoHeaderInSigantureString)
+            {
+                listOfHeaders = listOfHeaders.Replace("(request-target) ", "");
+            }
+
             return
-                $"keyId=\"{spec.KeyId}\",algorithm=\"{spec.Algorithm}\",headers=\"{string.Join(" ", spec.Headers.Where(p=> p != "(request-target)"))}\",signature=\"{signature}\"";
+                $"keyId=\"{spec.KeyId}\",algorithm=\"{spec.Algorithm}\",headers=\"{listOfHeaders}\",signature=\"{signature}\"";
         }
     }
 }

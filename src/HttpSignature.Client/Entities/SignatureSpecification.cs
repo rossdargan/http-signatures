@@ -12,16 +12,15 @@ namespace HttpSignatures.Client.Entities
             set;
         }
 
-        public IEnumerable<string> Headers
-        {
-            get;
-            set;
-        }
+        public IEnumerable<string> Headers { get; set;  }
 
         public string Algorithm { get; set; }        
 
         public string HashAlgorithm { get; set; }
 
-        public string SignatureHeaderName { get; set; }
+
+        public bool IncludePseduoHeaderInSigantureString { get; set; } = true;
+
+        public bool UseSignatureAsAuthroizationHeader { get; set; } = true;
     }
 }

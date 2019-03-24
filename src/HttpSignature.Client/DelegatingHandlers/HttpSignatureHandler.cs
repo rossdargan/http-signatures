@@ -22,7 +22,14 @@ namespace HttpSignatures.Client.DelegatingHandlers
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var signature =_signatureGenerator.GenerateSignature(Request.FromHttpRequest(request), _signatureSpecification);
-            request.Headers.Add(_signatureSpecification.SignatureHeaderName, signature);
+            if(_signatureSpecification.UseSignatureAsAuthroizationHeader)
+            {
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Signature", signature);
+            }
+            else
+            {
+                request.Headers.Add("signature", signature);
+            }
             return base.SendAsync(request, cancellationToken);
         }
     }

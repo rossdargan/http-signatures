@@ -30,7 +30,7 @@ namespace HttpSignature.Client.Tests
                 Algorithm = "SHA256"
             };
 
-            IStringSigner stringSigner = new RSAStringSigner(signatureSpecification, Fixture.PrivateKey);
+            IStringSigner stringSigner = new RSAStringSigner(signatureSpecification, "".ToRSAParameters());// StringExtension.PrivateKey);
 
             string knownResult = "g0nWC3Q4EnzX+gYhbxG38dhyVjlewsgA7xJjrllYc3GVuiYEE0KLEugQ2JhbeJK2zK2FtL1476wsS0QmTd+V+HOs0jdIy+aAmBIOAx6urIvsRYTmgOzUMnPfLDTtda1PYvUkwQMMZcZ2jmVN3lPs4ZWuGc9HwWfBlTtrhdjXPdyvMG8SgfTjM11MLl7b8UYURB4aWA7FG7aaoEGV3d8F5QY85pwgMtzSsRcpZL9cGIh8zr7p79fjeJ0M+arD/5geaATJRLsFovmpBFcdZKve44muLNCNmTO+Uu18sHhX5zi+mkINw4G1wxNXbyrPRaFPhcN9o6ZDlMPgtAogvyqbSQ==";
             // Act
