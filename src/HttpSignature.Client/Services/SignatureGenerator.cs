@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -44,7 +45,7 @@ namespace HttpSignatures.Client.Services
         private string FormatAuthorization(ISignatureSpecification spec, string signature)
         {
             return
-                $"Signature keyId=\"{spec.KeyId}\",algorithm=\"{spec.Algorithm}\",headers=\"{string.Join(" ", spec.Headers)}\",signature=\"{signature}\"";
+                $"keyId=\"{spec.KeyId}\",algorithm=\"{spec.Algorithm}\",headers=\"{string.Join(" ", spec.Headers.Where(p=> p != "(request-target)"))}\",signature=\"{signature}\"";
         }
     }
 }

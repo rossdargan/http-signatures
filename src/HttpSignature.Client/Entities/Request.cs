@@ -33,6 +33,10 @@ namespace HttpSignatures.Client.Entities
             {
                 request.Headers.Add(header.Key.ToLowerInvariant(), header.Value);
             }
+            foreach(var header in httpRequestMessage.Content.Headers)
+            {
+                request.Headers.Add(header.Key.ToLowerInvariant(), header.Value);
+            }
             return request;
         }
     }
